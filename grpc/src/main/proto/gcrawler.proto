@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.gorkemgok.gcrawler.grpc";
+option java_outer_classname = "CrawlerGrpc";
+
+package gcrawler;
+
+message ScreenShot{
+    int32 width = 1;
+    int32 height = 2;
+    bytes img = 3;
+
+}
+
+message VisitorResult {
+    string pageSource = 1;
+    repeated ScreenShot screenshots = 2;
+}
+
+message VisitRequest {
+    string url = 1;
+}
+
+message VisitResponse {
+
+}
+
+service VisitorService {
+
+    rpc Visit(VisitRequest) returns (VisitResponse);
+
+}

@@ -1,6 +1,7 @@
 package com.gorkemgok.gcrawler;
 
 import com.google.inject.Inject;
+import com.gorkemgok.gcrawler.grpc.VisitorResult;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,7 +27,7 @@ public class VisitorService implements Runnable {
             VisitorTask visitorTask = taskFactory.create(new URL("https://www.google.com"));
             Future<VisitorResult> resultFuture = executor.submit(visitorTask);
             VisitorResult result = resultFuture.get();
-            System.out.println(result.getSource());
+            System.out.println(result.getPageSource());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
